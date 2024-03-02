@@ -1,22 +1,22 @@
 import { Injectable } from '@nestjs/common';
+import { OrderResponse } from 'src/exchange/interfaces/interface.response';
 import { ExchangeService } from 'src/exchange/rest-api/exchange.service';
 import { InfoService } from 'src/exchange/rest-api/info.service';
-import { OrderRequest } from 'src/exchange/interfaces/interface.order';
 
 @Injectable()
-export class AppService {
+export class UserService {
   constructor(
     private exchangeService: ExchangeService,
     private infoService: InfoService,
   ) {}
 
-  async order(
+  public async order(
     coin: string,
     isBuy: boolean,
     price: number,
     size: number,
     reduceOnly = false,
-  ): Promise<any> {
+  ): Promise<OrderResponse> {
     return await this.exchangeService.order(
       coin,
       isBuy,
@@ -26,15 +26,18 @@ export class AppService {
     );
   }
 
-  async bulkOrder(orderList: OrderRequest[]): Promise<any> {
-    return await this.exchangeService.bulkOrder(orderList);
-  }
-
-  async cancel(coin: string, oid: number): Promise<any> {
+  public async cancel(coin: string, oid: number): Promise<OrderResponse> {
     return await this.exchangeService.cancel(coin, oid);
   }
 
-  //   async getL2Book(coin: string): Promise<any> {
-  //     return await this.infoService.l2Book(coin);
-  //   }
+  public async cancelByCloid(
+    coin: string,
+    cloid: string,
+  ): Promise<OrderResponse> {
+    return await this.exchangeService.cancelByCloid(coin, cloid);
+  }
+
+  public async getAccountInfo(userId: string) {
+    return await this.infoService.getAccountInfo(userId);
+  }
 }

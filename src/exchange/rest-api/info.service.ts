@@ -26,6 +26,9 @@ interface ApiRequestBody {
 
 @Injectable()
 export class InfoService {
+  getAccountInfo(_userId: string) {
+    throw new Error('Method not implemented.');
+  }
   constructor(private postApiService: PostApiService) {}
 
   private async fetchApiData<T>(body: ApiRequestBody): Promise<T> {
