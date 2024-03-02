@@ -1,11 +1,19 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { UserService } from 'src/service/user.service';
+import { ApiTags, ApiOperation, ApiQuery } from '@nestjs/swagger';
 
+@ApiTags('user')
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
 
   @Get('order')
+  @ApiOperation({ summary: 'Order' })
+  @ApiQuery({
+    name: 'coin',
+    required: true,
+    description: 'The coin',
+  })
   async order(
     @Query('coin') coin: string,
     @Query('isBuy') isBuy: boolean,
@@ -17,6 +25,12 @@ export class UserController {
   }
 
   @Get('cancel')
+  @ApiOperation({ summary: 'Cancel' })
+  @ApiQuery({
+    name: 'coin',
+    required: true,
+    description: 'The coin',
+  })
   async cancel(
     @Query('coin') coin: string,
     @Query('oid') oid: number,
@@ -25,6 +39,12 @@ export class UserController {
   }
 
   @Get('cancelByCloid')
+  @ApiOperation({ summary: 'Cancel by cloid' })
+  @ApiQuery({
+    name: 'coin',
+    required: true,
+    description: 'The coin',
+  })
   async cancelByCloid(
     @Query('coin') coin: string,
     @Query('cloid') cloid: string,
