@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ExchangeService } from './exchange.service';
+import { ExchangeService } from './rest-api/exchange.service';
 
 describe('ExchangeService', () => {
   let service: ExchangeService;
