@@ -5,7 +5,7 @@ import { FetchCandleService } from 'src/service/candle.service';
 export class CandleController {
   constructor(private fetchCandleService: FetchCandleService) {}
 
-  @Get()
+  @Get(':coin')
   async fetchCandle(
     @Query('coin') coin: string,
     @Query('timeFrame') timeFrame: number,
