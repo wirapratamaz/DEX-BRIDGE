@@ -20,6 +20,7 @@ export class ExchangeService {
     private metaDataService: MetaDataService,
   ) {}
 
+  // method is used to post an action to the exchange
   async postAction(action: any): Promise<any> {
     const [signature, nonce] = await this.signingService.signL1Action(action);
 
@@ -32,6 +33,7 @@ export class ExchangeService {
     return await this.postApiService.baseAPI('exchange', body);
   }
 
+  // method is used to convert order request to order wire
   private orderRequestToOrderWire(
     orders: OrderRequest[],
     asset: number,
@@ -54,6 +56,7 @@ export class ExchangeService {
     });
   }
 
+  // method is used to convert order wire to order action
   private orderWireToOrderAction(orderWire: OrderWire[]): any {
     return {
       type: 'order',
