@@ -44,6 +44,7 @@ DEX-BRIDGE is a backend server designed to retrieve and serve real-time orderboo
 
 - Node.js (v14 or later)
 - npm
+- Nest.js
 
 ### Installation
 
