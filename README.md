@@ -31,7 +31,6 @@ DEX-BRIDGE is a backend server designed to retrieve and serve real-time orderboo
 - Real-time data streaming from DEXs
 - Orderbook and candle chart data retrieval
 - WebSocket server for client subscriptions
-- Next.js frontend for data visualization
 - Supports multiple DEX integrations
 
 ## Supported DEXs
